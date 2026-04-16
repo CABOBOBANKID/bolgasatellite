@@ -498,10 +498,14 @@
      SHOP
 ════════════════════════════════════════════════════ -->
 
+<!-- ═══════════════════════════════════════════════════
+     SHOP — Drop-in replacement for the existing shop section
+     Adds: quantity selector + WhatsApp Buy button per product
+════════════════════════════════════════════════════ -->
 <section id="shop" style="padding:5rem 1.5rem;background:#fff;">
     <div style="max-width:1200px;margin:auto;">
         <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
-            <span style="background:#fff0e6;color:var(--orange);font-size:0.78rem;font-weight:700;padding:4px 14px;border-radius:99px;letter-spacing:0.1em;">QUALITY EQUIPMENT</span>
+            <span style="background:#f3e6ff;color:var(--orange);font-size:0.78rem;font-weight:700;padding:4px 14px;border-radius:99px;letter-spacing:0.1em;">QUALITY EQUIPMENT</span>
             <h2 class="heading" style="font-size:clamp(1.8rem,4vw,2.8rem);color:var(--blue);margin:1rem 0 0.5rem;">
                 We Sell Original Products
             </h2>
@@ -512,83 +516,157 @@
 
             <!-- Product 1: DStv Decoders -->
             <div class="shop-card reveal">
-                <img src="decorder.jpg" 
-                     alt="Original DStv Decoder" 
-                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
+                <img src="decorder.jpg" alt="Original DStv Decoder"
+                     style="width:100%;height:190px;object-fit:contain;margin-bottom:1rem;border-radius:12px;background:#f8fafc;">
                 <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Original DStv Decoders</h4>
-                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">4K • Explora • HD Zapper</p>
-                <div style="color:var(--orange);font-weight:700;font-size:0.9rem;font-family:'Syne',sans-serif;">From GH¢ 250</div>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:0.5rem;">4K • Explora • HD Zapper</p>
+                <div style="color:var(--orange);font-weight:700;font-size:0.9rem;font-family:'Syne',sans-serif;margin-bottom:0.75rem;">From GH¢ 250</div>
+                <!-- Quantity row -->
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:0.75rem;">
+                    <button onclick="changeQty('q1',-1)" style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">−</button>
+                    <span id="q1" style="font-size:1rem;font-weight:700;color:#002b80;min-width:24px;text-align:center;">1</span>
+                    <button onclick="changeQty('q1',1)"  style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">+</button>
+                </div>
+                <button onclick="buyOnWhatsApp('Original DStv Decoders','4K • Explora • HD Zapper','From GH¢ 250','q1')"
+                        style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;border:none;border-radius:10px;padding:0.75rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;transition:background 0.2s;"
+                        onmouseover="this.style.background='#1db957'" onmouseout="this.style.background='#25D366'">
+                    <i class="fa-brands fa-whatsapp" style="font-size:1.1rem;"></i> Buy on WhatsApp
+                </button>
             </div>
 
             <!-- Product 2: Satellite Dish -->
             <div class="shop-card reveal" style="transition-delay:0.1s;">
-                <img src="dishdstv.jpg" 
-                     alt="DStv Satellite Dish" 
-                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
+                <img src="dishdstv.jpg" alt="DStv Satellite Dish"
+                     style="width:100%;height:190px;object-fit:contain;margin-bottom:1rem;border-radius:12px;background:#f8fafc;">
                 <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">DStv Satellite Dishes</h4>
-                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">90cm • 1.2m • Premium</p>
-                <div style="color:var(--orange);font-weight:700;font-size:0.9rem;font-family:'Syne',sans-serif;">From GH¢450 </div>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:0.5rem;">90cm • 1.2m • Premium</p>
+                <div style="color:var(--orange);font-weight:700;font-size:0.9rem;font-family:'Syne',sans-serif;margin-bottom:0.75rem;">From GH¢ 450</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:0.75rem;">
+                    <button onclick="changeQty('q2',-1)" style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">−</button>
+                    <span id="q2" style="font-size:1rem;font-weight:700;color:#002b80;min-width:24px;text-align:center;">1</span>
+                    <button onclick="changeQty('q2',1)"  style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">+</button>
+                </div>
+                <button onclick="buyOnWhatsApp('DStv Satellite Dishes','90cm • 1.2m • Premium','From GH¢ 450','q2')"
+                        style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;border:none;border-radius:10px;padding:0.75rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;transition:background 0.2s;"
+                        onmouseover="this.style.background='#1db957'" onmouseout="this.style.background='#25D366'">
+                    <i class="fa-brands fa-whatsapp" style="font-size:1.1rem;"></i> Buy on WhatsApp
+                </button>
             </div>
 
             <!-- Product 3: Multi TV -->
             <div class="shop-card reveal" style="transition-delay:0.2s;">
-                <img src="multy.jpg" 
-                     alt="Multi TV Decoder" 
-                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
+                <img src="multy.jpg" alt="Multi TV Decoder"
+                     style="width:100%;height:190px;object-fit:contain;margin-bottom:1rem;border-radius:12px;background:#f8fafc;">
                 <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Multi TV Decoders &amp; Accessories</h4>
-                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">Full combo packages available</p>
-                <div style="color:var(--orange);font-weight:700;font-size:0.9rem;font-family:'Syne',sans-serif;">Combo from GH¢ 350</div>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:0.5rem;">Full combo packages available</p>
+                <div style="color:var(--orange);font-weight:700;font-size:0.9rem;font-family:'Syne',sans-serif;margin-bottom:0.75rem;">Combo from GH¢ 350</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:0.75rem;">
+                    <button onclick="changeQty('q3',-1)" style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">−</button>
+                    <span id="q3" style="font-size:1rem;font-weight:700;color:#002b80;min-width:24px;text-align:center;">1</span>
+                    <button onclick="changeQty('q3',1)"  style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">+</button>
+                </div>
+                <button onclick="buyOnWhatsApp('Multi TV Decoders & Accessories','Full combo packages available','Combo from GH¢ 350','q3')"
+                        style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;border:none;border-radius:10px;padding:0.75rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;transition:background 0.2s;"
+                        onmouseover="this.style.background='#1db957'" onmouseout="this.style.background='#25D366'">
+                    <i class="fa-brands fa-whatsapp" style="font-size:1.1rem;"></i> Buy on WhatsApp
+                </button>
             </div>
 
-            <!-- Product 4: Accessories -->
+            <!-- Product 4: LNBs -->
             <div class="shop-card reveal" style="transition-delay:0.3s;">
-                <img src="LMB.jpg" 
-                     alt="LNBs Cables Brackets" 
-                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
-                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">LNBs · </h4>
-                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">All installation accessories</p>
-                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;">✓ from GH¢ 30 ,In Stock Now</div>
+                <img src="LMB.jpg" alt="LNBs"
+                     style="width:100%;height:190px;object-fit:contain;margin-bottom:1rem;border-radius:12px;background:#f8fafc;">
+                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">LNBs</h4>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:0.5rem;">All installation accessories</p>
+                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;margin-bottom:0.75rem;">✓ From GH¢ 30 · In Stock</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:0.75rem;">
+                    <button onclick="changeQty('q4',-1)" style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">−</button>
+                    <span id="q4" style="font-size:1rem;font-weight:700;color:#002b80;min-width:24px;text-align:center;">1</span>
+                    <button onclick="changeQty('q4',1)"  style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">+</button>
+                </div>
+                <button onclick="buyOnWhatsApp('LNBs','All installation accessories','From GH¢ 30','q4')"
+                        style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;border:none;border-radius:10px;padding:0.75rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;transition:background 0.2s;"
+                        onmouseover="this.style.background='#1db957'" onmouseout="this.style.background='#25D366'">
+                    <i class="fa-brands fa-whatsapp" style="font-size:1.1rem;"></i> Buy on WhatsApp
+                </button>
             </div>
 
-             <!-- Product 5: Accessories -->
-            <div class="shop-card reveal" style="transition-delay:0.3s;">
-                <img src="images.jpg" 
-                     alt="LNBs Cables Brackets" 
-                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
-                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Mounts</h5>
-                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">All installation accessories</p>
-                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;">✓ from GH¢ 50,In Stock Now</div>
+            <!-- Product 5: Mounts -->
+            <div class="shop-card reveal" style="transition-delay:0.35s;">
+                <img src="images.jpg" alt="Mounts"
+                     style="width:100%;height:190px;object-fit:contain;margin-bottom:1rem;border-radius:12px;background:#f8fafc;">
+                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Mounts</h4>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:0.5rem;">All installation accessories</p>
+                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;margin-bottom:0.75rem;">✓ From GH¢ 50 · In Stock</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:0.75rem;">
+                    <button onclick="changeQty('q5',-1)" style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">−</button>
+                    <span id="q5" style="font-size:1rem;font-weight:700;color:#002b80;min-width:24px;text-align:center;">1</span>
+                    <button onclick="changeQty('q5',1)"  style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">+</button>
+                </div>
+                <button onclick="buyOnWhatsApp('Mounts','All installation accessories','From GH¢ 50','q5')"
+                        style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;border:none;border-radius:10px;padding:0.75rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;transition:background 0.2s;"
+                        onmouseover="this.style.background='#1db957'" onmouseout="this.style.background='#25D366'">
+                    <i class="fa-brands fa-whatsapp" style="font-size:1.1rem;"></i> Buy on WhatsApp
+                </button>
             </div>
 
-            <!-- Product 6: Accessories -->
-            <div class="shop-card reveal" style="transition-delay:0.3s;">
-                <img src="cables.jpg" 
-                     alt="LNBs Cables Brackets" 
-                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
-                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Cables</h6>
-                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">All installation accessories</p>
-                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;">✓ In Stock Now</div>
+            <!-- Product 6: Cables -->
+            <div class="shop-card reveal" style="transition-delay:0.4s;">
+                <img src="cables.jpg" alt="Cables"
+                     style="width:100%;height:190px;object-fit:contain;margin-bottom:1rem;border-radius:12px;background:#f8fafc;">
+                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Cables</h4>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:0.5rem;">All installation accessories</p>
+                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;margin-bottom:0.75rem;">✓ In Stock Now</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:0.75rem;">
+                    <button onclick="changeQty('q6',-1)" style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">−</button>
+                    <span id="q6" style="font-size:1rem;font-weight:700;color:#002b80;min-width:24px;text-align:center;">1</span>
+                    <button onclick="changeQty('q6',1)"  style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">+</button>
+                </div>
+                <button onclick="buyOnWhatsApp('Cables','All installation accessories','In Stock','q6')"
+                        style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;border:none;border-radius:10px;padding:0.75rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;transition:background 0.2s;"
+                        onmouseover="this.style.background='#1db957'" onmouseout="this.style.background='#25D366'">
+                    <i class="fa-brands fa-whatsapp" style="font-size:1.1rem;"></i> Buy on WhatsApp
+                </button>
             </div>
 
-<!-- Product 7: Accessories -->
-            <div class="shop-card reveal" style="transition-delay:0.3s;">
-                <img src="Remote.jpg" 
-                     alt="LNBs Cables Brackets" 
-                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
-                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Remote controls</h7>
-                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">All installation accessories</p>
-                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;">✓ In Stock Now</div>
+            <!-- Product 7: Remote Controls -->
+            <div class="shop-card reveal" style="transition-delay:0.45s;">
+                <img src="Remote.jpg" alt="Remote Controls"
+                     style="width:100%;height:190px;object-fit:contain;margin-bottom:1rem;border-radius:12px;background:#f8fafc;">
+                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Remote Controls</h4>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:0.5rem;">All installation accessories</p>
+                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;margin-bottom:0.75rem;">✓ In Stock Now</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:0.75rem;">
+                    <button onclick="changeQty('q7',-1)" style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">−</button>
+                    <span id="q7" style="font-size:1rem;font-weight:700;color:#002b80;min-width:24px;text-align:center;">1</span>
+                    <button onclick="changeQty('q7',1)"  style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">+</button>
+                </div>
+                <button onclick="buyOnWhatsApp('Remote Controls','All installation accessories','In Stock','q7')"
+                        style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;border:none;border-radius:10px;padding:0.75rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;transition:background 0.2s;"
+                        onmouseover="this.style.background='#1db957'" onmouseout="this.style.background='#25D366'">
+                    <i class="fa-brands fa-whatsapp" style="font-size:1.1rem;"></i> Buy on WhatsApp
+                </button>
             </div>
 
-            <!-- Product 8: Accessories -->
-            <div class="shop-card reveal" style="transition-delay:0.3s;">
-                <img src="starlink.jpg" 
-                     alt="LNBs Cables Brackets" 
-                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
-                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Starlink Decoders</h5>
-                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">All installation accessories</p>
-                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;">✓In Stock Now</div>
+            <!-- Product 8: Starlink -->
+            <div class="shop-card reveal" style="transition-delay:0.5s;">
+                <img src="starlink.jpg" alt="Starlink Decoders"
+                     style="width:100%;height:190px;object-fit:contain;margin-bottom:1rem;border-radius:12px;background:#f8fafc;">
+                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Starlink Decoders</h4>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:0.5rem;">High-speed internet satellite</p>
+                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;margin-bottom:0.75rem;">✓ In Stock Now</div>
+                <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:0.75rem;">
+                    <button onclick="changeQty('q8',-1)" style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">−</button>
+                    <span id="q8" style="font-size:1rem;font-weight:700;color:#002b80;min-width:24px;text-align:center;">1</span>
+                    <button onclick="changeQty('q8',1)"  style="width:32px;height:32px;border-radius:8px;border:1.5px solid #dde5f5;background:#f8faff;font-size:1.2rem;cursor:pointer;font-weight:700;color:#002b80;">+</button>
+                </div>
+                <button onclick="buyOnWhatsApp('Starlink Decoders','High-speed internet satellite','In Stock','q8')"
+                        style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;background:#25D366;color:#fff;border:none;border-radius:10px;padding:0.75rem;font-family:'Syne',sans-serif;font-weight:700;font-size:0.88rem;cursor:pointer;transition:background 0.2s;"
+                        onmouseover="this.style.background='#1db957'" onmouseout="this.style.background='#25D366'">
+                    <i class="fa-brands fa-whatsapp" style="font-size:1.1rem;"></i> Buy on WhatsApp
+                </button>
             </div>
+
         </div>
 
         <p style="text-align:center;margin-top:2.5rem;font-size:0.85rem;color:#94a3b8;">
@@ -596,6 +674,7 @@
         </p>
     </div>
 </section>
+
 
 <!-- ═══════════════════════════════════════════════════
      WHY CHOOSE US
@@ -840,10 +919,7 @@
 <script>
     'use strict';
 
-    /* ── Mobile Menu ──────────────────────────────────────
-       FIX: Use class toggle exclusively — no style.display
-       conflict with Tailwind or inline styles.
-    ──────────────────────────────────────────────────── */
+    /* Mobile Menu */
     const mobileMenu   = document.getElementById('mobile-menu');
     const hamburgerBtn = document.getElementById('hamburger');
     const hamburgerIcon = document.getElementById('hamburger-icon');
@@ -860,29 +936,22 @@
         hamburgerBtn.setAttribute('aria-expanded', 'false');
     }
 
-    /* ── Smooth Navigation ────────────────────────────────
-       FIX: Removed the broken "show full-services-content"
-       logic that was re-triggering itself in a loop.
-       All service content is now always visible on the page.
-    ──────────────────────────────────────────────────── */
+    /* Smooth Navigation */
     function navigateTo(sectionId) {
         const section = document.getElementById(sectionId);
         if (!section) return;
 
-        // Offset for sticky navbar height
-        const navH = document.getElementById('navbar').offsetHeight;
+        const navH = document.getElementById('navbar').offsetHeight || 68;
         const top  = section.getBoundingClientRect().top + window.scrollY - navH - 12;
 
         window.scrollTo({ top, behavior: 'smooth' });
         closeMobileMenu();
     }
 
-    /* ── Active Nav Link on Scroll ───────────────────────
-       NEW: Highlights the correct nav link as user scrolls.
-    ──────────────────────────────────────────────────── */
+    /* Active Nav Link on Scroll */
     const sections  = ['home', 'services', 'shop', 'contact'];
     const navLinks  = document.querySelectorAll('.nav-link');
-    const navHeight = document.getElementById('navbar').offsetHeight;
+    const navHeight = document.getElementById('navbar').offsetHeight || 68;
 
     function updateActiveLink() {
         let current = 'home';
@@ -893,7 +962,6 @@
             }
         });
         navLinks.forEach(link => {
-            // Match by onclick attribute text
             const target = link.getAttribute('onclick');
             if (target && target.includes(`'${current}'`)) {
                 link.classList.add('active');
@@ -905,9 +973,29 @@
 
     window.addEventListener('scroll', updateActiveLink, { passive: true });
 
-    /* ── Scroll Reveal ────────────────────────────────────
-       NEW: Elements with class "reveal" fade in on scroll.
-    ──────────────────────────────────────────────────── */
+    /* Quantity +/- buttons */
+    function changeQty(id, delta) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const current = parseInt(el.textContent) || 1;
+        el.textContent = Math.max(1, current + delta);
+    }
+
+    /* WhatsApp buy button */
+    function buyOnWhatsApp(productName, details, price, qtyId) {
+        const qty = parseInt(document.getElementById(qtyId).textContent) || 1;
+        const text =
+            `Hello Cabobo Solutions! 👋\n\n` +
+            `I'd like to order from your website:\n\n` +
+            `*Product:* ${productName}\n` +
+            `*Details:* ${details}\n` +
+            `*Price:* ${price}\n` +
+            `*Quantity:* ${qty}\n\n` +
+            `Please confirm availability and payment. Thank you!`;
+        window.open(`https://wa.me/233554448862?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    /* Scroll Reveal */
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -919,48 +1007,44 @@
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    /* ── Contact Form Validation & Submit ────────────────
-       FIX: No <form> submit event needed; button is type="button".
-       Inline success/error messages replace the alert() popup.
-    ──────────────────────────────────────────────────── */
+    /* Contact Form */
     function handleSubmit() {
-    const name     = document.getElementById('name').value.trim();
-    const phone    = document.getElementById('phone').value.trim();
-    const location = document.getElementById('location').value.trim();
-    const message  = document.getElementById('message').value.trim();
+        const name     = document.getElementById('name').value.trim();
+        const phone    = document.getElementById('phone').value.trim();
+        const location = document.getElementById('location').value.trim();
+        const message  = document.getElementById('message').value.trim();
 
-    const successEl = document.getElementById('form-success');
-    const errorEl   = document.getElementById('form-error');
+        const successEl = document.getElementById('form-success');
+        const errorEl   = document.getElementById('form-error');
 
-    successEl.style.display = 'none';
-    errorEl.style.display   = 'none';
+        successEl.style.display = 'none';
+        errorEl.style.display   = 'none';
 
-    if (!name || !phone || !message) {
-        errorEl.style.display = 'block';
-        errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        return;
+        if (!name || !phone || !message) {
+            errorEl.style.display = 'block';
+            errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            return;
+        }
+
+        const waText = `Hello Cabobo Solutions! 👋\n\n*New Enquiry from Website*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Location:* ${location || 'Not specified'}\n*Message:* ${message}`;
+
+        const encoded = encodeURIComponent(waText);
+        const waURL   = `https://wa.me/233554448862?text=${encoded}`;
+
+        window.open(waURL, '_blank');
+
+        // Clear form and show success
+        document.getElementById('name').value     = '';
+        document.getElementById('phone').value    = '';
+        document.getElementById('location').value = '';
+        document.getElementById('message').value  = '';
+
+        successEl.style.display = 'block';
+        successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    // Build the WhatsApp message text
-    const waText = `Hello Cabobo Solutions! 👋\n\n*New Enquiry from Website*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Location:* ${location || 'Not specified'}\n*Message:* ${message}`;
-
-    const encoded = encodeURIComponent(waText);
-    const waURL   = `https://wa.me/233554448862?text=${encoded}`;
-
-    // Open WhatsApp in a new tab
-    window.open(waURL, '_blank');
-
-    // Clear form and show success
-    document.getElementById('name').value     = '';
-    document.getElementById('phone').value    = '';
-    document.getElementById('location').value = '';
-    document.getElementById('message').value  = '';
-
-    successEl.style.display = 'block';
-    successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-
     console.log('%cCABOBO SOLUTIONS — Website loaded ✓', 'color:#f97316;font-weight:bold;font-size:14px;');
+</script>
 </script>
 
 </body>
