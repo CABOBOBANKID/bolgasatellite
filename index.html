@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CABOBO SOLUTIONS - DStv & Multi TV Installation + Sales in Bolgatanga. Crystal Clear TV Starts Here! Professional, Fast, Reliable & Affordable.">
+    <title>CABOBO SOLUTIONS | DStv & Multi TV Experts in Bolgatanga</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Distinctive font pairing: Syne (bold display) + DM Sans (clean body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --blue: #002b80;
+            --blue-mid: #0a3fa0;
+            --orange: #f97316;
+            --orange-dark: #ea580c;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #fff;
+            color: #1a1a2e;
+            overflow-x: hidden;
+        }
+
+        .heading { font-family: 'Syne', sans-serif; }
+
+        /* ─── NAVBAR ─────────────────────────────────────────── */
+        #navbar {
+            background: var(--blue);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,43,128,0.25);
+        }
+
+        /* FIX: Proper nav underline transition */
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            color: rgba(255,255,255,0.85);
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 3px;
+            background: var(--orange);
+            border-radius: 99px;
+            /* FIX: transition was missing here in original */
+            transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-link:hover { color: #fff; }
+        .nav-link:hover::after,
+        .nav-link.active::after { width: 100%; }
+        .nav-link.active { color: #fff; }
+
+        /* ─── HERO ───────────────────────────────────────────── */
+        #home {
+            background: linear-gradient(135deg, var(--blue) 0%, var(--blue-mid) 60%, #1a5ec4 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated wave – CSS only, no JS needed */
+        #home::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(249,115,22,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 50% at 10% 30%, rgba(255,255,255,0.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .signal-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid rgba(249,115,22,0.3);
+            animation: ripple 3s ease-out infinite;
+        }
+        .signal-ring:nth-child(2) { animation-delay: 1s; }
+        .signal-ring:nth-child(3) { animation-delay: 2s; }
+        @keyframes ripple {
+            0%   { width: 0; height: 0; opacity: 0.8; transform: translate(-50%,-50%) scale(0); }
+            100% { width: 300px; height: 300px; opacity: 0; transform: translate(-50%,-50%) scale(1); }
+        }
+
+        /* ─── CARDS ──────────────────────────────────────────── */
+        .service-card {
+            border: 1.5px solid #e8eef8;
+            border-radius: 20px;
+            padding: 2rem;
+            background: #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(249,115,22,0.12);
+            border-color: var(--orange);
+        }
+
+        .shop-card {
+            border: 1.5px solid #e8eef8;
+            border-radius: 20px;
+            padding: 1.5rem;
+            background: #fff;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .shop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 36px rgba(0,43,128,0.1);
+        }
+
+        /* ─── FORM INPUTS ─────────────────────────────────────── */
+        .form-input {
+            width: 100%;
+            padding: 0.9rem 1.25rem;
+            border: 1.5px solid #dde5f5;
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: #fafbff;
+        }
+        .form-input:focus {
+            border-color: var(--orange);
+            box-shadow: 0 0 0 3px rgba(249,115,22,0.12);
+            background: #fff;
+        }
+
+        /* ─── BUTTONS ────────────────────────────────────────── */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--orange);
+            color: #fff;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            padding: 0.9rem 2rem;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            font-size: 0.95rem;
+            letter-spacing: 0.04em;
+        }
+        .btn-primary:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(249,115,22,0.35);
+        }
+        .btn-outline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: 2px solid rgba(255,255,255,0.6);
+            color: #fff;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            padding: 0.9rem 2rem;
+            border-radius: 12px;
+            background: transparent;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s;
+            font-size: 0.95rem;
+        }
+        .btn-outline:hover {
+            border-color: #fff;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* ─── TICKER BAR ─────────────────────────────────────── */
+        .ticker-wrapper { overflow: hidden; white-space: nowrap; }
+        .ticker-track {
+            display: inline-block;
+            animation: ticker 20s linear infinite;
+        }
+        @keyframes ticker {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ─── TESTIMONIAL ─────────────────────────────────────── */
+        .testimonial-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(6px);
+        }
+
+        /* ─── MOBILE MENU ─────────────────────────────────────── */
+        #mobile-menu {
+            display: none; /* controlled purely via JS */
+            background: #001f66;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+        #mobile-menu.open { display: block; }
+
+        /* ─── PULSE DOT ──────────────────────────────────────── */
+        @keyframes ping {
+            75%, 100% { transform: scale(2); opacity: 0; }
+        }
+        .ping { animation: ping 1.2s cubic-bezier(0,0,0.2,1) infinite; }
+
+        /* ─── SCROLL REVEAL ──────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════════════ -->
+<nav id="navbar">
+    <div style="max-width:1200px; margin:auto; padding:0 1.5rem;">
+        <div style="display:flex; align-items:center; justify-content:space-between; height:68px;">
+
+            <!-- Logo -->
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+                <div style="width:40px;height:40px;background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center;">
+                    <i class="fa-solid fa-satellite-dish" style="color:var(--orange);font-size:1.3rem;"></i>
+                </div>
+                <div>
+                    <div class="heading" style="font-size:1.3rem;font-weight:800;color:#fff;line-height:1;">CABOBO</div>
+                    <div style="font-size:0.6rem;color:#fdba74;letter-spacing:0.2em;margin-top:1px;">SOLUTIONS</div>
+                </div>
+                <div style="display:none;" class="badge-sm">
+                    <span style="background:rgba(249,115,22,0.2);color:#fdba74;font-size:0.68rem;padding:2px 10px;border-radius:99px;font-weight:600;letter-spacing:0.05em;">Bolga's Trusted Expert</span>
+                </div>
+            </div>
+
+            <!-- Desktop Nav Links -->
+            <div class="desktop-nav" style="display:flex;align-items:center;gap:2.5rem;">
+                <span class="nav-link active" onclick="navigateTo('home')">HOME</span>
+                <span class="nav-link" onclick="navigateTo('services')">SERVICES</span>
+                <span class="nav-link" onclick="navigateTo('shop')">SHOP</span>
+                <span class="nav-link" onclick="navigateTo('contact')">CONTACT</span>
+            </div>
+
+            <div style="display:flex;align-items:center;gap:0.75rem;">
+                <!-- WhatsApp CTA -->
+                <a href="https://wa.me/233554448862" target="_blank"
+                   style="display:flex;align-items:center;gap:0.5rem;background:#25D366;color:#fff;font-weight:700;font-size:0.82rem;padding:0.55rem 1.2rem;border-radius:10px;text-decoration:none;transition:background 0.2s;"
+                   onmouseover="this.style.background='#1db957'" onmouseout="this.style.background='#25D366'">
+                    <i class="fa-brands fa-whatsapp" style="font-size:1.1rem;"></i>
+                    <span class="hide-xs">WhatsApp Us</span>
+                </a>
+
+                <!-- Hamburger — mobile only -->
+                <button id="hamburger" onclick="toggleMobileMenu()"
+                        style="display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer;padding:4px 8px;"
+                        aria-label="Toggle menu" aria-expanded="false">
+                    <i id="hamburger-icon" class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <!-- FIX: controlled via class toggle instead of style.display conflict -->
+        <div id="mobile-menu" role="navigation" aria-label="Mobile menu">
+            <div style="padding:1rem 0.5rem 1.5rem;display:flex;flex-direction:column;gap:0.25rem;">
+                <span onclick="navigateTo('home');closeMobileMenu()" class="nav-link" style="padding:0.75rem 0.5rem;border-bottom:1px solid rgba(255,255,255,0.08);display:block;">HOME</span>
+                <span onclick="navigateTo('services');closeMobileMenu()" class="nav-link" style="padding:0.75rem 0.5rem;border-bottom:1px solid rgba(255,255,255,0.08);display:block;">SERVICES</span>
+                <span onclick="navigateTo('shop');closeMobileMenu()" class="nav-link" style="padding:0.75rem 0.5rem;border-bottom:1px solid rgba(255,255,255,0.08);display:block;">SHOP</span>
+                <span onclick="navigateTo('contact');closeMobileMenu()" class="nav-link" style="padding:0.75rem 0.5rem;display:block;">CONTACT</span>
+                <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.12);">
+                    <p style="font-size:0.72rem;color:#fdba74;margin-bottom:0.5rem;">Call or WhatsApp now:</p>
+                    <a href="tel:0554448862" style="display:flex;align-items:center;justify-content:center;gap:0.75rem;background:#fff;color:var(--blue);font-family:'Syne',sans-serif;font-weight:800;padding:1rem;border-radius:12px;font-size:1.1rem;text-decoration:none;">
+                        <i class="fa-solid fa-phone"></i> 055 444 8862
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════ -->
+<section id="home" style="padding: 5rem 1.5rem 6rem; position:relative;">
+    <!-- Animated signal rings (decorative) -->
+    <div style="position:absolute;top:30%;left:70%;">
+        <div class="signal-ring"></div>
+        <div class="signal-ring"></div>
+        <div class="signal-ring"></div>
+    </div>
+
+    <div style="max-width:1200px;margin:auto;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;" class="hero-grid">
+
+            <!-- Left: Text -->
+            <div>
+                <div style="display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:#fdba74;font-size:0.78rem;font-weight:600;padding:0.4rem 1rem;border-radius:99px;letter-spacing:0.08em;margin-bottom:1.5rem;">
+                    <span style="position:relative;display:inline-flex;width:10px;height:10px;">
+                        <span class="ping" style="position:absolute;inset:0;background:#f97316;border-radius:50%;opacity:0.6;"></span>
+                        <span style="position:relative;width:10px;height:10px;background:#f97316;border-radius:50%;"></span>
+                    </span>
+                    BOLGATANGA'S TRUSTED SATELLITE EXPERT
+                </div>
+
+                <h1 class="heading" style="font-size:clamp(2.2rem,5vw,3.8rem);color:#fff;line-height:1.1;margin-bottom:1rem;">
+                    DStv &amp; MULTI TV<br>Installation + Sales
+                </h1>
+
+                <h2 class="heading" style="font-size:clamp(1.8rem,4vw,3.2rem);color:var(--orange);line-height:1.1;margin-bottom:1.5rem;">
+                    Crystal Clear TV<br>Starts Here!
+                </h2>
+
+                <p style="color:rgba(255,255,255,0.85);font-size:1.05rem;line-height:1.7;margin-bottom:2rem;max-width:460px;">
+                    Professional · Fast · Reliable · Affordable<br>
+                    Serving Bolgatanga &amp; surrounding communities
+                </p>
+
+                <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;">
+                    <button class="btn-primary" onclick="navigateTo('contact')">
+                        <i class="fa-solid fa-signal"></i>
+                        GET FREE SIGNAL CHECK
+                    </button>
+                    <a href="https://wa.me/233554448862" target="_blank" class="btn-outline" style="text-decoration:none;">
+                        <i class="fa-brands fa-whatsapp" style="font-size:1.2rem;"></i>
+                        CHAT ON WHATSAPP
+                    </a>
+                </div>
+
+                <div style="display:flex;flex-wrap:wrap;gap:1.5rem;font-size:0.85rem;color:rgba(255,255,255,0.8);">
+                    <span><i class="fa-solid fa-check" style="color:var(--orange);margin-right:6px;"></i>Same-Day Service</span>
+                    <span><i class="fa-solid fa-check" style="color:var(--orange);margin-right:6px;"></i>100% Signal Guarantee</span>
+                    <span><i class="fa-solid fa-check" style="color:var(--orange);margin-right:6px;"></i>12-Month Warranty</span>
+                </div>
+            </div>
+
+            <!-- Right: Visual card stack -->
+            <div style="position:relative;min-height:360px;" class="hero-visual">
+
+                <!-- TV screen card -->
+                <div style="background:#000;border-radius:20px;padding:1rem;box-shadow:0 30px 60px rgba(0,0,0,0.4);">
+                    <div style="aspect-ratio:16/9;background:linear-gradient(135deg,#6d28d9,#db2777,#f97316);border-radius:14px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;">
+                        <div style="text-align:center;color:#fff;">
+                            <i class="fa-solid fa-tv" style="font-size:4.5rem;opacity:0.85;display:block;margin-bottom:0.75rem;"></i>
+                            <div class="heading" style="font-size:1.6rem;">4K ULTRA HD</div>
+                            <div style="font-size:0.75rem;letter-spacing:0.2em;opacity:0.8;margin-top:4px;">DStv • Multi TV • GOtv</div>
+                        </div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:1rem;margin-top:0.75rem;padding:0 0.5rem;">
+                        <div style="flex:1;height:6px;background:#222;border-radius:3px;"></div>
+                        <span style="color:#555;font-size:0.7rem;font-family:monospace;white-space:nowrap;">DStv DECODER</span>
+                        <div style="flex:1;height:6px;background:#222;border-radius:3px;"></div>
+                    </div>
+                </div>
+
+                <!-- Floating badge: crystal clear -->
+                <div style="position:absolute;top:-16px;left:-16px;background:#fff;border-radius:14px;padding:0.75rem 1rem;box-shadow:0 8px 30px rgba(0,0,0,0.2);display:flex;align-items:center;gap:0.75rem;transform:rotate(-6deg);">
+                    <i class="fa-solid fa-tv" style="font-size:2rem;color:var(--blue);"></i>
+                    <div>
+                        <div class="heading" style="font-size:0.95rem;color:var(--blue);">Crystal Clear</div>
+                        <div style="font-size:0.7rem;color:var(--orange);margin-top:1px;">4K • HD • Sports</div>
+                    </div>
+                </div>
+
+                <!-- Floating badge: signal guarantee -->
+                <div style="position:absolute;bottom:-12px;right:16px;background:var(--orange);color:#fff;font-size:0.75rem;font-weight:700;padding:0.5rem 1rem;border-radius:99px;font-family:'Syne',sans-serif;letter-spacing:0.04em;box-shadow:0 6px 20px rgba(249,115,22,0.4);">
+                    ✓ 100% Signal Guarantee
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     TICKER / OFFER BAR
+════════════════════════════════════════════════════ -->
+<div style="background:var(--orange);color:#fff;padding:0.85rem 0;overflow:hidden;">
+    <div class="ticker-wrapper">
+        <div class="ticker-track">
+            <span style="font-family:'Syne',sans-serif;font-size:0.82rem;font-weight:700;letter-spacing:0.06em;">
+                &nbsp;&nbsp;&nbsp;🎁 FREE SIGNAL CHECK &amp; QUOTE — NO OBLIGATION &nbsp;•&nbsp;
+                📡 SAME-DAY SERVICE AVAILABLE — CALL BEFORE 12PM &nbsp;•&nbsp;
+                🛡️ 12-MONTH WARRANTY ON ALL WORK &amp; PRODUCTS &nbsp;•&nbsp;
+                📞 CALL 055 444 8862 — 7 DAYS A WEEK &nbsp;•&nbsp;
+                🎁 SIGNAL CHECK &amp; QUOTE — NO OBLIGATION &nbsp;•&nbsp;
+                📡 SAME-DAY SERVICE AVAILABLE — CALL BEFORE 12PM &nbsp;•&nbsp;
+                🛡️ 12-MONTH WARRANTY ON ALL WORK &amp; PRODUCTS &nbsp;•&nbsp;
+                📞 CALL 055 444 8862 — 7 DAYS A WEEK &nbsp;&nbsp;&nbsp;
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     SERVICES
+════════════════════════════════════════════════════ -->
+<section id="services" style="padding:5rem 1.5rem;background:#f8faff;">
+    <div style="max-width:1200px;margin:auto;">
+        <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+            <span style="background:#fff0e6;color:var(--orange);font-size:0.78rem;font-weight:700;padding:4px 14px;border-radius:99px;letter-spacing:0.1em;">OUR SERVICES</span>
+            <h2 class="heading" style="font-size:clamp(1.8rem,4vw,2.8rem);color:var(--blue);margin:1rem 0 0.5rem;">
+                Expert DStv &amp; Multi TV Solutions
+            </h2>
+            <p style="color:#64748b;max-width:440px;margin:auto;line-height:1.7;">
+                Fast, reliable installation and maintenance across Bolgatanga and Upper East Region
+            </p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;" class="services-grid">
+
+            <div class="service-card reveal">
+                <div style="width:48px;height:48px;background:#e8f0fe;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+                    <i class="fa-solid fa-satellite-dish" style="font-size:1.4rem;color:var(--blue);"></i>
+                </div>
+                <h3 class="heading" style="font-size:1.05rem;color:var(--blue);margin-bottom:0.5rem;">Expert Dish Installation</h3>
+                <p style="color:#64748b;font-size:0.9rem;line-height:1.7;margin-bottom:1rem;">DStv &amp; Multi TV dish mounting, perfect alignment and full setup on any roof type.</p>
+                <ul style="list-style:none;padding:0;margin:0;font-size:0.85rem;color:#475569;display:flex;flex-direction:column;gap:0.5rem;">
+                    <li><i class="fa-solid fa-check" style="color:#22c55e;margin-right:8px;"></i>Wall &amp; roof mounting</li>
+                    <li><i class="fa-solid fa-check" style="color:#22c55e;margin-right:8px;"></i>Multi-room TV support</li>
+                    <li><i class="fa-solid fa-check" style="color:#22c55e;margin-right:8px;"></i>Perfect signal alignment</li>
+                </ul>
+            </div>
+
+            <div class="service-card reveal" style="transition-delay:0.1s;">
+                <div style="width:48px;height:48px;background:#e8f0fe;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+                    <i class="fa-solid fa-gears" style="font-size:1.4rem;color:var(--blue);"></i>
+                </div>
+                <h3 class="heading" style="font-size:1.05rem;color:var(--blue);margin-bottom:0.5rem;">Decoder Setup &amp; Activation</h3>
+                <p style="color:#64748b;font-size:0.9rem;line-height:1.7;margin-bottom:1rem;">Full configuration, smartcard activation, software updates and complete channel scanning.</p>
+                <ul style="list-style:none;padding:0;margin:0;font-size:0.85rem;color:#475569;display:flex;flex-direction:column;gap:0.5rem;">
+                    <li><i class="fa-solid fa-check" style="color:#22c55e;margin-right:8px;"></i>Decoder configuration</li>
+                    <li><i class="fa-solid fa-check" style="color:#22c55e;margin-right:8px;"></i>Signal troubleshooting</li>
+                    <li><i class="fa-solid fa-check" style="color:#22c55e;margin-right:8px;"></i>Relocation &amp; upgrades</li>
+                </ul>
+            </div>
+
+            <div class="service-card reveal" style="transition-delay:0.2s;">
+                <div style="width:48px;height:48px;background:#e8f0fe;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+                    <i class="fa-solid fa-wrench" style="font-size:1.4rem;color:var(--blue);"></i>
+                </div>
+                <h3 class="heading" style="font-size:1.05rem;color:var(--blue);margin-bottom:0.5rem;">Repairs &amp; Maintenance</h3>
+                <p style="color:#64748b;font-size:0.9rem;line-height:1.7;margin-bottom:1rem;">Signal loss fix, faulty LNB replacement, cable damage repairs, and annual servicing.</p>
+                <div style="display:inline-flex;align-items:center;gap:6px;background:#dcfce7;color:#16a34a;font-size:0.78rem;font-weight:600;padding:6px 14px;border-radius:99px;">
+                    <i class="fa-solid fa-bolt"></i> Same-Day Service Available
+                </div>
+            </div>
+
+            <div class="service-card reveal" style="transition-delay:0.05s;">
+                <div style="width:48px;height:48px;background:#e8f0fe;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+                    <i class="fa-solid fa-truck-moving" style="font-size:1.4rem;color:var(--blue);"></i>
+                </div>
+                <h3 class="heading" style="font-size:1.05rem;color:var(--blue);margin-bottom:0.5rem;">Relocation &amp; Upgrades</h3>
+                <p style="color:#64748b;font-size:0.9rem;line-height:1.7;">Moving house? We relocate your full DStv or Multi TV setup with zero signal loss guaranteed.</p>
+            </div>
+
+            <div class="service-card reveal" style="transition-delay:0.15s;">
+                <div style="width:48px;height:48px;background:#e8f0fe;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+                    <i class="fa-solid fa-calendar-check" style="font-size:1.4rem;color:var(--blue);"></i>
+                </div>
+                <h3 class="heading" style="font-size:1.05rem;color:var(--blue);margin-bottom:0.5rem;">Annual Maintenance Contracts</h3>
+                <p style="color:#64748b;font-size:0.9rem;line-height:1.7;">Keep your system running perfectly all year round with a dedicated maintenance package.</p>
+            </div>
+
+            <div class="service-card reveal" style="transition-delay:0.25s;">
+                <div style="width:48px;height:48px;background:#e8f0fe;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;">
+                    <i class="fa-solid fa-shield-halved" style="font-size:1.4rem;color:var(--blue);"></i>
+                </div>
+                <h3 class="heading" style="font-size:1.05rem;color:var(--blue);margin-bottom:0.5rem;">12-Month Warranty</h3>
+                <p style="color:#64748b;font-size:0.9rem;line-height:1.7;">All installations and equipment carry a full 12-month warranty. We come back free if anything goes wrong.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     SHOP
+════════════════════════════════════════════════════ -->
+
+<section id="shop" style="padding:5rem 1.5rem;background:#fff;">
+    <div style="max-width:1200px;margin:auto;">
+        <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+            <span style="background:#fff0e6;color:var(--orange);font-size:0.78rem;font-weight:700;padding:4px 14px;border-radius:99px;letter-spacing:0.1em;">QUALITY EQUIPMENT</span>
+            <h2 class="heading" style="font-size:clamp(1.8rem,4vw,2.8rem);color:var(--blue);margin:1rem 0 0.5rem;">
+                We Sell Original Products
+            </h2>
+            <p style="color:#64748b;">All equipment comes with warranty · Genuine DStv &amp; Multi TV accessories</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:1.5rem;" class="shop-grid">
+
+            <!-- Product 1: DStv Decoders -->
+            <div class="shop-card reveal">
+                <img src="decorder.jpg" 
+                     alt="Original DStv Decoder" 
+                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
+                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Original DStv Decoders</h4>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">4K • Explora • HD Zapper</p>
+                <div style="color:var(--orange);font-weight:700;font-size:0.9rem;font-family:'Syne',sans-serif;">From GH¢ 250</div>
+            </div>
+
+            <!-- Product 2: Satellite Dish -->
+            <div class="shop-card reveal" style="transition-delay:0.1s;">
+                <img src="dishdstv.jpg" 
+                     alt="DStv Satellite Dish" 
+                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
+                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">DStv Satellite Dishes</h4>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">90cm • 1.2m • Premium</p>
+                <div style="color:var(--orange);font-weight:700;font-size:0.9rem;font-family:'Syne',sans-serif;">From GH¢450 </div>
+            </div>
+
+            <!-- Product 3: Multi TV -->
+            <div class="shop-card reveal" style="transition-delay:0.2s;">
+                <img src="multy.jpg" 
+                     alt="Multi TV Decoder" 
+                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
+                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Multi TV Decoders &amp; Accessories</h4>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">Full combo packages available</p>
+                <div style="color:var(--orange);font-weight:700;font-size:0.9rem;font-family:'Syne',sans-serif;">Combo from GH¢ 350</div>
+            </div>
+
+            <!-- Product 4: Accessories -->
+            <div class="shop-card reveal" style="transition-delay:0.3s;">
+                <img src="LMB.jpg" 
+                     alt="LNBs Cables Brackets" 
+                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
+                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">LNBs · </h4>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">All installation accessories</p>
+                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;">✓ from GH¢ 30 ,In Stock Now</div>
+            </div>
+
+             <!-- Product 5: Accessories -->
+            <div class="shop-card reveal" style="transition-delay:0.3s;">
+                <img src="images.jpg" 
+                     alt="LNBs Cables Brackets" 
+                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
+                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Mounts</h5>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">All installation accessories</p>
+                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;">✓ from GH¢ 50,In Stock Now</div>
+            </div>
+
+            <!-- Product 6: Accessories -->
+            <div class="shop-card reveal" style="transition-delay:0.3s;">
+                <img src="cables.jpg" 
+                     alt="LNBs Cables Brackets" 
+                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
+                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Cables</h6>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">All installation accessories</p>
+                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;">✓ In Stock Now</div>
+            </div>
+
+<!-- Product 7: Accessories -->
+            <div class="shop-card reveal" style="transition-delay:0.3s;">
+                <img src="remot.jpg" 
+                     alt="LNBs Cables Brackets" 
+                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
+                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Remote controls</h7>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">All installation accessories</p>
+                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;">✓ In Stock Now</div>
+            </div>
+
+            <!-- Product 8: Accessories -->
+            <div class="shop-card reveal" style="transition-delay:0.3s;">
+                <img src="starlink.jpg" 
+                     alt="LNBs Cables Brackets" 
+                     style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
+                <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Starlink Decoders</h5>
+                <p style="font-size:0.78rem;color:#94a3b8;margin-bottom:1rem;">All installation accessories</p>
+                <div style="color:#22c55e;font-weight:700;font-size:0.85rem;font-family:'Syne',sans-serif;">✓In Stock Now</div>
+            </div>
+        </div>
+
+        <p style="text-align:center;margin-top:2.5rem;font-size:0.85rem;color:#94a3b8;">
+            ✓ Original products &nbsp;·&nbsp; ✓ Full warranty &nbsp;·&nbsp; ✓ Combo packages available &nbsp;·&nbsp; ✓ Installation included on purchase
+        </p>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     WHY CHOOSE US
+════════════════════════════════════════════════════ -->
+<section style="padding:5rem 1.5rem;background:var(--blue);color:#fff;">
+    <div style="max-width:1200px;margin:auto;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;" class="why-grid">
+
+            <div class="reveal">
+                <h2 class="heading" style="font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:2.5rem;">
+                    Why Choose<br>CABOBO SOLUTIONS?
+                </h2>
+
+                <div style="display:flex;flex-direction:column;gap:1.75rem;">
+                    <div style="display:flex;gap:1rem;align-items:flex-start;">
+                        <div style="flex-shrink:0;width:36px;height:36px;background:var(--orange);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.9rem;">1</div>
+                        <div>
+                            <h4 style="font-weight:600;margin-bottom:4px;">Experienced &amp; Certified Technician</h4>
+                            <p style="color:rgba(255,255,255,0.72);font-size:0.9rem;line-height:1.6;">Over 8 years installing DStv &amp; Multi TV across Upper East Region</p>
+                        </div>
+                    </div>
+                    <div style="display:flex;gap:1rem;align-items:flex-start;">
+                        <div style="flex-shrink:0;width:36px;height:36px;background:var(--orange);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.9rem;">2</div>
+                        <div>
+                            <h4 style="font-weight:600;margin-bottom:4px;">100% Signal Guarantee</h4>
+                            <p style="color:rgba(255,255,255,0.72);font-size:0.9rem;line-height:1.6;">Perfect picture quality guaranteed or we return free of charge</p>
+                        </div>
+                    </div>
+                    <div style="display:flex;gap:1rem;align-items:flex-start;">
+                        <div style="flex-shrink:0;width:36px;height:36px;background:var(--orange);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.9rem;">3</div>
+                        <div>
+                            <h4 style="font-weight:600;margin-bottom:4px;">Clean &amp; Professional Work</h4>
+                            <p style="color:rgba(255,255,255,0.72);font-size:0.9rem;line-height:1.6;">No mess, neat cabling, professional finish every single time</p>
+                        </div>
+                    </div>
+                    <div style="display:flex;gap:1rem;align-items:flex-start;">
+                        <div style="flex-shrink:0;width:36px;height:36px;background:var(--orange);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:0.9rem;">4</div>
+                        <div>
+                            <h4 style="font-weight:600;margin-bottom:4px;">Warranty on Installation &amp; Equipment</h4>
+                            <p style="color:rgba(255,255,255,0.72);font-size:0.9rem;line-height:1.6;">Full 12-month warranty on all work and products sold</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div style="display:flex;flex-direction:column;gap:1.25rem;" class="reveal" style="transition-delay:0.15s;">
+                <div class="testimonial-card">
+                    <div style="color:var(--orange);margin-bottom:0.75rem;font-size:1rem;">★★★★★</div>
+                    <p style="font-style:italic;color:rgba(255,255,255,0.85);font-size:0.9rem;line-height:1.7;">"Cabobo Solutions installed my DStv in 45 minutes and I have never had signal issues again. Best decision I made!"</p>
+                    <p style="margin-top:1rem;font-weight:600;font-size:0.85rem;color:#fdba74;">— Abubakar Salifu, Bolgatanga Central</p>
+                </div>
+                <div class="testimonial-card">
+                    <div style="color:var(--orange);margin-bottom:0.75rem;font-size:1rem;">★★★★★</div>
+                    <p style="font-style:italic;color:rgba(255,255,255,0.85);font-size:0.9rem;line-height:1.7;">"Very professional work. Clean cables, strong signal, and they finished on time. I recommend Cabobo Solutions to everyone."</p>
+                    <p style="margin-top:1rem;font-weight:600;font-size:0.85rem;color:#fdba74;">— Mabel Asigri, Tamale Road Area</p>
+                </div>
+
+                <!-- Quick CTA -->
+                <a href="tel:0554448862"
+                   style="display:flex;align-items:center;justify-content:center;gap:0.75rem;background:#fff;color:var(--blue);font-family:'Syne',sans-serif;font-weight:800;padding:1.1rem 2rem;border-radius:14px;font-size:1.05rem;text-decoration:none;transition:box-shadow 0.2s;"
+                   onmouseover="this.style.boxShadow='0 8px 30px rgba(255,255,255,0.25)'"
+                   onmouseout="this.style.boxShadow='none'">
+                    <i class="fa-solid fa-phone" style="color:var(--orange);"></i>
+                    CALL 055 444 8862 NOW
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════════════ -->
+<section id="contact" style="padding:5rem 1.5rem;background:#f8faff;">
+    <div style="max-width:1200px;margin:auto;">
+        <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+            <span style="background:#fff0e6;color:var(--orange);font-size:0.78rem;font-weight:700;padding:4px 14px;border-radius:99px;letter-spacing:0.1em;">GET IN TOUCH</span>
+            <h2 class="heading" style="font-size:clamp(1.8rem,4vw,2.8rem);color:var(--blue);margin:1rem 0 0.5rem;">
+                Book Your Free Signal Check
+            </h2>
+            <p style="color:#64748b;">Send a message and we'll reply within 30 minutes</p>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="contact-grid">
+
+            <!-- Form -->
+            <!-- FIX: Using div wrapper instead of <form> avoids accidental page reloads; 
+                 onsubmit handler properly prevents default -->
+            <div style="background:#fff;border-radius:20px;padding:2.5rem;box-shadow:0 4px 30px rgba(0,43,128,0.07);" class="reveal">
+                <h3 class="heading" style="font-size:1.4rem;color:var(--blue);margin-bottom:0.5rem;">Send Us a Message</h3>
+                <p style="font-size:0.88rem;color:#64748b;margin-bottom:2rem;">We serve Bolgatanga and all surrounding communities</p>
+
+                <div id="contact-form" style="display:flex;flex-direction:column;gap:1.25rem;">
+                    <div>
+                        <label style="display:block;font-size:0.83rem;font-weight:600;color:#374151;margin-bottom:6px;">Full Name *</label>
+                        <input type="text" id="name" required placeholder="Your full name" class="form-input">
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                        <div>
+                            <label style="display:block;font-size:0.83rem;font-weight:600;color:#374151;margin-bottom:6px;">Phone / WhatsApp *</label>
+                            <input type="tel" id="phone" required placeholder="e.g. 055 444 8862" class="form-input">
+                        </div>
+                        <div>
+                            <label style="display:block;font-size:0.83rem;font-weight:600;color:#374151;margin-bottom:6px;">Location</label>
+                            <input type="text" id="location" placeholder="e.g. Zongo, Central…" class="form-input">
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display:block;font-size:0.83rem;font-weight:600;color:#374151;margin-bottom:6px;">What do you need? *</label>
+                        <textarea id="message" rows="4" placeholder="Installation, decoder purchase, repair, signal fix…" class="form-input" style="resize:vertical;"></textarea>
+                    </div>
+
+                    <!-- FIX: button type="button" prevents accidental form submit; onclick handles logic -->
+                    <button type="button" id="submit-btn" onclick="handleSubmit()"
+                            class="btn-primary" style="width:100%;justify-content:center;font-size:1rem;padding:1.1rem;">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        SEND MESSAGE — REPLY IN &lt; 30 MIN
+                    </button>
+
+                    <div id="form-success" style="display:none;background:#dcfce7;color:#15803d;border-radius:12px;padding:1rem;font-size:0.9rem;text-align:center;">
+                        ✅ Message sent! We'll contact you within 30 minutes.
+                    </div>
+                    <div id="form-error" style="display:none;background:#fef2f2;color:#dc2626;border-radius:12px;padding:1rem;font-size:0.9rem;text-align:center;">
+                        ⚠️ Please fill in your name, phone, and message.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact info -->
+            <div style="display:flex;flex-direction:column;gap:1.5rem;" class="reveal" style="transition-delay:0.1s;">
+
+                <div style="background:#fff;border-radius:20px;padding:2rem;box-shadow:0 4px 30px rgba(0,43,128,0.07);">
+                    <h3 class="heading" style="font-size:1.2rem;color:var(--blue);margin-bottom:1.5rem;">Our Contact Details</h3>
+                    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+                        <div style="display:flex;gap:1rem;align-items:flex-start;">
+                            <div style="width:44px;height:44px;background:#fff0e6;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="fa-solid fa-phone" style="color:var(--orange);font-size:1.2rem;"></i>
+                            </div>
+                            <div>
+                                <p style="font-weight:600;font-size:0.85rem;color:#374151;margin-bottom:4px;">Call or WhatsApp</p>
+                                <a href="tel:0554448862" class="heading" style="font-size:1.6rem;color:var(--blue);text-decoration:none;font-weight:800;">055 444 8862</a>
+                                <p style="font-size:0.78rem;color:#94a3b8;margin-top:2px;">Available 7 days a week</p>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:1rem;align-items:flex-start;">
+                            <div style="width:44px;height:44px;background:#fff0e6;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="fa-solid fa-location-dot" style="color:var(--orange);font-size:1.2rem;"></i>
+                            </div>
+                            <div>
+                                <p style="font-weight:600;font-size:0.85rem;color:#374151;margin-bottom:4px;">Service Area</p>
+                                <p style="font-size:0.9rem;color:#475569;line-height:1.6;">Bolgatanga &amp; Upper East Region — we come to you</p>
+                            </div>
+                        </div>
+                        <div style="display:flex;gap:1rem;align-items:flex-start;">
+                            <div style="width:44px;height:44px;background:#fff0e6;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                                <i class="fa-solid fa-clock" style="color:var(--orange);font-size:1.2rem;"></i>
+                            </div>
+                            <div>
+                                <p style="font-weight:600;font-size:0.85rem;color:#374151;margin-bottom:4px;">Business Hours</p>
+                                <p style="font-size:0.88rem;color:#475569;line-height:1.7;">Mon – Sat: 7:00 AM – 7:00 PM<br>Sunday: Emergency installations only</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- WhatsApp direct button -->
+                <a href="https://wa.me/233554448862?text=Hello%20Cabobo%20Solutions!%20I%20need%20help%20with%20my%20DStv."
+                   target="_blank"
+                   style="display:flex;align-items:center;justify-content:center;gap:0.75rem;background:#25D366;color:#fff;font-family:'Syne',sans-serif;font-weight:800;padding:1.2rem;border-radius:14px;font-size:1.05rem;text-decoration:none;transition:background 0.2s,transform 0.2s;"
+                   onmouseover="this.style.background='#1db957';this.style.transform='translateY(-2px)'"
+                   onmouseout="this.style.background='#25D366';this.style.transform='none'">
+                    <i class="fa-brands fa-whatsapp" style="font-size:1.4rem;"></i>
+                    CHAT ON WHATSAPP NOW
+                </a>
+
+                <!-- Map placeholder (upgrade path note) -->
+                <div style="background:#e8eef8;border-radius:16px;height:160px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#94a3b8;font-size:0.82rem;">
+                    <i class="fa-solid fa-map-location-dot" style="font-size:2.5rem;margin-bottom:0.75rem;color:#c7d4f0;"></i>
+                    <span>Bolgatanga, Upper East Region, Ghana</span>
+                    <span style="font-size:0.72rem;margin-top:4px;color:#b0b9ce;">Embed Google Maps here in production</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════ -->
+<footer style="background:#001a55;color:#fff;padding:3rem 1.5rem;">
+    <div style="max-width:1200px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:2rem;">
+
+        <div style="display:flex;align-items:center;gap:0.75rem;">
+            <div style="width:38px;height:38px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;">
+                <i class="fa-solid fa-satellite-dish" style="color:var(--orange);font-size:1.2rem;"></i>
+            </div>
+            <div class="heading" style="font-size:1.2rem;font-weight:800;">CABOBO SOLUTIONS</div>
+        </div>
+
+        <div style="text-align:center;">
+            <p style="font-size:0.88rem;color:rgba(255,255,255,0.7);">Bringing Quality Entertainment to Every Home in Bolga!</p>
+            <p style="font-size:0.75rem;color:rgba(255,255,255,0.4);margin-top:4px;">© 2026 Cabobo Solutions · Upper East Region, Ghana</p>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:1.25rem;font-size:1.5rem;">
+            <a href="https://wa.me/233554448862" target="_blank" style="color:rgba(255,255,255,0.7);transition:color 0.2s;" onmouseover="this.style.color='#25D366'" onmouseout="this.style.color='rgba(255,255,255,0.7)'"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="tel:0554448862" style="color:rgba(255,255,255,0.7);transition:color 0.2s;" onmouseover="this.style.color='#f97316'" onmouseout="this.style.color='rgba(255,255,255,0.7)'"><i class="fa-solid fa-phone"></i></a>
+        </div>
+    </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════
+     RESPONSIVE STYLES
+════════════════════════════════════════════════════ -->
+<style>
+    @media (max-width: 900px) {
+        .hero-grid     { grid-template-columns: 1fr !important; }
+        .hero-visual   { display: none !important; }
+        .why-grid      { grid-template-columns: 1fr !important; }
+        .contact-grid  { grid-template-columns: 1fr !important; }
+        .services-grid { grid-template-columns: 1fr 1fr !important; }
+        .shop-grid     { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 600px) {
+        .services-grid { grid-template-columns: 1fr !important; }
+        .shop-grid     { grid-template-columns: 1fr 1fr !important; }
+        .desktop-nav   { display: none !important; }
+        #hamburger     { display: block !important; }
+        .hide-xs       { display: none !important; }
+    }
+    @media (min-width: 601px) {
+        .badge-sm      { display: block !important; }
+    }
+</style>
+
+<!-- ═══════════════════════════════════════════════════
+     JAVASCRIPT — CLEAN & FIXED
+════════════════════════════════════════════════════ -->
+<script>
+    'use strict';
+
+    /* ── Mobile Menu ──────────────────────────────────────
+       FIX: Use class toggle exclusively — no style.display
+       conflict with Tailwind or inline styles.
+    ──────────────────────────────────────────────────── */
+    const mobileMenu   = document.getElementById('mobile-menu');
+    const hamburgerBtn = document.getElementById('hamburger');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+
+    function toggleMobileMenu() {
+        const isOpen = mobileMenu.classList.toggle('open');
+        hamburgerIcon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+    }
+
+    function closeMobileMenu() {
+        mobileMenu.classList.remove('open');
+        hamburgerIcon.className = 'fa-solid fa-bars';
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    /* ── Smooth Navigation ────────────────────────────────
+       FIX: Removed the broken "show full-services-content"
+       logic that was re-triggering itself in a loop.
+       All service content is now always visible on the page.
+    ──────────────────────────────────────────────────── */
+    function navigateTo(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (!section) return;
+
+        // Offset for sticky navbar height
+        const navH = document.getElementById('navbar').offsetHeight;
+        const top  = section.getBoundingClientRect().top + window.scrollY - navH - 12;
+
+        window.scrollTo({ top, behavior: 'smooth' });
+        closeMobileMenu();
+    }
+
+    /* ── Active Nav Link on Scroll ───────────────────────
+       NEW: Highlights the correct nav link as user scrolls.
+    ──────────────────────────────────────────────────── */
+    const sections  = ['home', 'services', 'shop', 'contact'];
+    const navLinks  = document.querySelectorAll('.nav-link');
+    const navHeight = document.getElementById('navbar').offsetHeight;
+
+    function updateActiveLink() {
+        let current = 'home';
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el && window.scrollY >= el.offsetTop - navHeight - 60) {
+                current = id;
+            }
+        });
+        navLinks.forEach(link => {
+            // Match by onclick attribute text
+            const target = link.getAttribute('onclick');
+            if (target && target.includes(`'${current}'`)) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveLink, { passive: true });
+
+    /* ── Scroll Reveal ────────────────────────────────────
+       NEW: Elements with class "reveal" fade in on scroll.
+    ──────────────────────────────────────────────────── */
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ── Contact Form Validation & Submit ────────────────
+       FIX: No <form> submit event needed; button is type="button".
+       Inline success/error messages replace the alert() popup.
+    ──────────────────────────────────────────────────── */
+    function handleSubmit() {
+        const name    = document.getElementById('name').value.trim();
+        const phone   = document.getElementById('phone').value.trim();
+        const message = document.getElementById('message').value.trim();
+
+        const successEl = document.getElementById('form-success');
+        const errorEl   = document.getElementById('form-error');
+
+        // Hide both first
+        successEl.style.display = 'none';
+        errorEl.style.display   = 'none';
+
+        // Validate required fields
+        if (!name || !phone || !message) {
+            errorEl.style.display = 'block';
+            errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            return;
+        }
+
+        const btn = document.getElementById('submit-btn');
+        const original = btn.innerHTML;
+
+        btn.innerHTML  = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING…';
+        btn.disabled   = true;
+        btn.style.opacity = '0.75';
+
+        // Simulate async send (replace with real fetch() call to backend)
+        setTimeout(() => {
+            btn.innerHTML  = original;
+            btn.disabled   = false;
+            btn.style.opacity = '1';
+
+            // Clear form
+            document.getElementById('name').value     = '';
+            document.getElementById('phone').value    = '';
+            document.getElementById('location').value = '';
+            document.getElementById('message').value  = '';
+
+            successEl.style.display = 'block';
+            successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 1600);
+    }
+
+    console.log('%cCABOBO SOLUTIONS — Website loaded ✓', 'color:#f97316;font-weight:bold;font-size:14px;');
+</script>
+
+</body>
+</html>
