@@ -572,7 +572,7 @@
 
 <!-- Product 7: Accessories -->
             <div class="shop-card reveal" style="transition-delay:0.3s;">
-                <img src="Remote.jpg" 
+                <img src="remot.jpg" 
                      alt="LNBs Cables Brackets" 
                      style="width:100%; height:190px; object-fit:contain; margin-bottom:1rem; border-radius:12px; background:#f8fafc;">
                 <h4 class="heading" style="color:var(--blue);font-size:0.95rem;margin-bottom:4px;">Remote controls</h7>
@@ -924,51 +924,44 @@
        Inline success/error messages replace the alert() popup.
     ──────────────────────────────────────────────────── */
     function handleSubmit() {
-        const name    = document.getElementById('name').value.trim();
-        const phone   = document.getElementById('phone').value.trim();
-        const message = document.getElementById('message').value.trim();
+    const name     = document.getElementById('name').value.trim();
+    const phone    = document.getElementById('phone').value.trim();
+    const location = document.getElementById('location').value.trim();
+    const message  = document.getElementById('message').value.trim();
 
-        const successEl = document.getElementById('form-success');
-        const errorEl   = document.getElementById('form-error');
+    const successEl = document.getElementById('form-success');
+    const errorEl   = document.getElementById('form-error');
 
-        // Hide both first
-        successEl.style.display = 'none';
-        errorEl.style.display   = 'none';
+    successEl.style.display = 'none';
+    errorEl.style.display   = 'none';
 
-        // Validate required fields
-        if (!name || !phone || !message) {
-            errorEl.style.display = 'block';
-            errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            return;
-        }
-
-        const btn = document.getElementById('submit-btn');
-        const original = btn.innerHTML;
-
-        btn.innerHTML  = '<i class="fa-solid fa-spinner fa-spin"></i> SENDING…';
-        btn.disabled   = true;
-        btn.style.opacity = '0.75';
-
-        // Simulate async send (replace with real fetch() call to backend)
-        setTimeout(() => {
-            btn.innerHTML  = original;
-            btn.disabled   = false;
-            btn.style.opacity = '1';
-
-            // Clear form
-            document.getElementById('name').value     = '';
-            document.getElementById('phone').value    = '';
-            document.getElementById('location').value = '';
-            document.getElementById('message').value  = '';
-
-            successEl.style.display = 'block';
-            successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 1600);
+    if (!name || !phone || !message) {
+        errorEl.style.display = 'block';
+        errorEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
     }
+
+    // Build the WhatsApp message text
+    const waText = `Hello Cabobo Solutions! 👋\n\n*New Enquiry from Website*\n\n*Name:* ${name}\n*Phone:* ${phone}\n*Location:* ${location || 'Not specified'}\n*Message:* ${message}`;
+
+    const encoded = encodeURIComponent(waText);
+    const waURL   = `https://wa.me/233554448862?text=${encoded}`;
+
+    // Open WhatsApp in a new tab
+    window.open(waURL, '_blank');
+
+    // Clear form and show success
+    document.getElementById('name').value     = '';
+    document.getElementById('phone').value    = '';
+    document.getElementById('location').value = '';
+    document.getElementById('message').value  = '';
+
+    successEl.style.display = 'block';
+    successEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
 
     console.log('%cCABOBO SOLUTIONS — Website loaded ✓', 'color:#f97316;font-weight:bold;font-size:14px;');
 </script>
 
 </body>
 </html>
-
